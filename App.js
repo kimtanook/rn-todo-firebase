@@ -41,8 +41,8 @@ export default function App() {
       const stringTodo = await AsyncStorage.getItem("todos");
       const storageCategory = await AsyncStorage.getItem("category");
       const objectTodo = JSON.parse(stringTodo);
-      setTodo(objectTodo);
-      setCategory(storageCategory);
+      setTodo(objectTodo ?? []);
+      setCategory(storageCategory ?? "js");
     };
     getTodo();
   }, []);
