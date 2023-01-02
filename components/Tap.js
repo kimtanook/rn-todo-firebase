@@ -51,6 +51,7 @@ export default Tap;
 const StTopContainer = styled.View`
   flex-direction: row;
   justify-content: space-around;
+  margin-bottom: 20px;
 `;
 const StTextView = styled.View`
   padding: 0px 5px 0px 5px;

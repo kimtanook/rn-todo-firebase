@@ -11,7 +11,13 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-import {Alert, KeyboardAvoidingView, ScrollView, Platform} from "react-native";
+import {
+  Alert,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+  Text,
+} from "react-native";
 import styled, {css} from "@emotion/native";
 
 import {useState, useEffect} from "react";
@@ -129,6 +135,7 @@ function MainView() {
   return (
     <StSafeAreaView>
       <StatusBar style="auto" />
+      <StTitleText>Todo List</StTitleText>
       <ScrollView>
         <StView>
           {category === ""
@@ -177,11 +184,20 @@ export default MainView;
 
 const StSafeAreaView = styled.SafeAreaView`
   flex: 1;
-  margin: 20px;
 `;
 
 const StView = styled.View`
   flex: 1;
   align-items: center;
   text-align: center;
+`;
+const StTitleText = styled.Text`
+  text-align: center;
+  background-color: black;
+  color: white;
+  height: 50px;
+  line-height: 50px;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 30px;
 `;
