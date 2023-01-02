@@ -21,7 +21,7 @@ import Tap from "../components/Tap";
 
 function TodoList() {
   const [todo, setTodo] = useState([]);
-  const [category, setCategory] = useState("js");
+  const [category, setCategory] = useState("");
   const [todoInput, setTodoInput] = useState("");
   const [editTodoInput, setEditTodoInput] = useState("");
 
@@ -122,26 +122,40 @@ function TodoList() {
       <StatusBar style="auto" />
       <Tap category={category} setCategory={setCategory} />
       <SubmitTodo
+        category={category}
         todoInput={todoInput}
         onChangeTodo={onChangeTodo}
         onSubmitTodo={onSubmitTodo}
       />
       <ScrollView>
         <StView>
-          {todo
-            .filter((item) => item.category === category)
-            .map((item) => (
-              <Todo
-                key={item.id + 1}
-                item={item}
-                confirmTodo={confirmTodo}
-                deleteTodo={deleteTodo}
-                editTodoToggle={editTodoToggle}
-                onSubmitUpdateTodo={onSubmitUpdateTodo}
-                onChangeUpdateTodo={onChangeUpdateTodo}
-                editTodoInput={editTodoInput}
-              />
-            ))}
+          {category === ""
+            ? todo.map((item) => (
+                <Todo
+                  key={item.id + 1}
+                  item={item}
+                  confirmTodo={confirmTodo}
+                  deleteTodo={deleteTodo}
+                  editTodoToggle={editTodoToggle}
+                  onSubmitUpdateTodo={onSubmitUpdateTodo}
+                  onChangeUpdateTodo={onChangeUpdateTodo}
+                  editTodoInput={editTodoInput}
+                />
+              ))
+            : todo
+                .filter((item) => item.category === category)
+                .map((item) => (
+                  <Todo
+                    key={item.id + 1}
+                    item={item}
+                    confirmTodo={confirmTodo}
+                    deleteTodo={deleteTodo}
+                    editTodoToggle={editTodoToggle}
+                    onSubmitUpdateTodo={onSubmitUpdateTodo}
+                    onChangeUpdateTodo={onChangeUpdateTodo}
+                    editTodoInput={editTodoInput}
+                  />
+                ))}
         </StView>
       </ScrollView>
     </StSafeAreaView>

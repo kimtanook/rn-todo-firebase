@@ -1,50 +1,46 @@
 import styled, {css} from "@emotion/native";
-import {TouchableOpacity, StyleSheet} from "react-native";
+import {TouchableOpacity, StyleSheet, Text} from "react-native";
 
 function Tap({category, setCategory}) {
   return (
     <StTopContainer>
       <TouchableOpacity>
-        <StText
-          onPress={() => setCategory("js")}
-          style={[
-            styles.tap,
-            {
-              backgroundColor: category === "js" ? "blue" : "gray",
-              ...styles.tap,
-            },
-          ]}
+        <StTextView
+          style={{
+            backgroundColor: category === "JavaScript" ? "#a1d2ff" : "gray",
+          }}
         >
-          Javascript
-        </StText>
+          <StText onPress={() => setCategory("JavaScript")}>Javascript</StText>
+        </StTextView>
       </TouchableOpacity>
       <TouchableOpacity>
-        <StText
-          onPress={() => setCategory("react")}
-          style={[
-            styles.tap,
-            {
-              backgroundColor: category === "react" ? "blue" : "gray",
-              ...styles.tap,
-            },
-          ]}
+        <StTextView
+          style={{
+            backgroundColor: category === "React" ? "#a1d2ff" : "gray",
+          }}
         >
-          React
-        </StText>
+          <StText onPress={() => setCategory("React")}>React</StText>
+        </StTextView>
       </TouchableOpacity>
       <TouchableOpacity>
-        <StText
-          onPress={() => setCategory("ct")}
-          style={[
-            styles.tap,
-            {
-              backgroundColor: category === "ct" ? "blue" : "gray",
-              ...styles.tap,
-            },
-          ]}
+        <StTextView
+          style={{
+            backgroundColor: category === "Coding Test" ? "#a1d2ff" : "gray",
+          }}
         >
-          Coding Test
-        </StText>
+          <StText onPress={() => setCategory("Coding Test")}>
+            Coding Test
+          </StText>
+        </StTextView>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <StTextView
+          style={{
+            backgroundColor: category === "" ? "#a1d2ff" : "gray",
+          }}
+        >
+          <StText onPress={() => setCategory("")}>전체보기</StText>
+        </StTextView>
       </TouchableOpacity>
     </StTopContainer>
   );
@@ -57,13 +53,14 @@ const StTopContainer = styled.View`
   flex-direction: row;
   justify-content: space-around;
 `;
-const StText = styled.Text`
-  font-size: 20px;
-  font-weight: bold;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
+const StTextView = styled.View`
+  padding: 0px 5px 0px 5px;
+  border-radius: 10px;
 `;
-const styles = StyleSheet.create({
-  tap: {},
-});
+const StText = styled.Text`
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+`;

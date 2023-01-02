@@ -1,13 +1,24 @@
 import styled, {css} from "@emotion/native";
+import {Text, View} from "react-native";
 
-function SubmitTodo({todoInput, onChangeTodo, onSubmitTodo}) {
+function SubmitTodo({category, todoInput, onChangeTodo, onSubmitTodo}) {
   return (
-    <StTextInput
-      value={todoInput}
-      onChangeText={onChangeTodo}
-      onSubmitEditing={onSubmitTodo}
-      placeholder="입력 후 엔터"
-    />
+    <View>
+      {category === "" ? (
+        <StTextInput
+          editable={false}
+          placeholder="입력하려면 상단탭을 선택해주세요."
+        />
+      ) : (
+        <StTextInput
+          editable={true}
+          value={todoInput}
+          onChangeText={onChangeTodo}
+          onSubmitEditing={onSubmitTodo}
+          placeholder="입력 후 엔터"
+        />
+      )}
+    </View>
   );
 }
 export default SubmitTodo;
