@@ -1,5 +1,5 @@
 import styled, {css} from "@emotion/native";
-import {Text, View} from "react-native";
+import {View} from "react-native";
 
 function SubmitTodo({category, todoInput, onChangeTodo, onSubmitTodo}) {
   return (
@@ -7,7 +7,7 @@ function SubmitTodo({category, todoInput, onChangeTodo, onSubmitTodo}) {
       {category === "" ? (
         <StTextInput
           editable={false}
-          placeholder="입력하려면 상단탭을 선택해주세요."
+          placeholder="Todo를 입력하려면 상단탭을 선택해주세요."
         />
       ) : (
         <StTextInput
@@ -15,7 +15,8 @@ function SubmitTodo({category, todoInput, onChangeTodo, onSubmitTodo}) {
           value={todoInput}
           onChangeText={onChangeTodo}
           onSubmitEditing={onSubmitTodo}
-          placeholder="입력 후 엔터"
+          placeholder="Todo 입력 후 엔터"
+          maxLength={22}
         />
       )}
     </View>

@@ -1,5 +1,5 @@
-import TodoList from "./components/TodoList";
+import MainView from "./components/MainView";
 
 export default function App() {
-  return <TodoList />;
+  return <MainView />;
 }

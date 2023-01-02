@@ -36,11 +36,13 @@ function Todo({
                   backgroundColor: "white",
                   marginLeft: 10,
                   textAlign: "center",
+                  width: 240,
                 }}
                 value={editTodoInput}
                 onChangeText={onChangeUpdateTodo}
                 onSubmitEditing={() => onSubmitUpdateTodo(item.id)}
                 placeholder="수정할 내용"
+                maxLength={22}
               />
             ) : (
               <Text
@@ -120,7 +122,7 @@ const StTodoContainerView = styled.View`
   margin: 10px;
   padding: 0px 20px 0px 20px;
   background-color: #bfbfbf;
-  width: 80%;
+  width: 100%;
 `;
 const StCategoryView = styled.View`
   flex: 1;
@@ -129,7 +131,7 @@ const StCategoryView = styled.View`
 `;
 const StTodoView = styled.View`
   flex: 1;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
@@ -143,5 +145,6 @@ const styles = StyleSheet.create({
   todo: {
     textAlign: "center",
     fontSize: 25,
+    width: 250,
   },
 });

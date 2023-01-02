@@ -25,11 +25,11 @@ function Tap({category, setCategory}) {
       <TouchableOpacity>
         <StTextView
           style={{
-            backgroundColor: category === "Coding Test" ? "#a1d2ff" : "gray",
+            backgroundColor: category === "React Native" ? "#a1d2ff" : "gray",
           }}
         >
-          <StText onPress={() => setCategory("Coding Test")}>
-            Coding Test
+          <StText onPress={() => setCategory("React Native")}>
+            React Native
           </StText>
         </StTextView>
       </TouchableOpacity>
@@ -49,7 +49,6 @@ function Tap({category, setCategory}) {
 export default Tap;
 
 const StTopContainer = styled.View`
-  margin-top: 30px;
   flex-direction: row;
   justify-content: space-around;
 `;

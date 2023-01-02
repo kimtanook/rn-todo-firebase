@@ -11,15 +11,15 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-import {Alert, ScrollView} from "react-native";
+import {Alert, KeyboardAvoidingView, ScrollView, Platform} from "react-native";
 import styled, {css} from "@emotion/native";
 
 import {useState, useEffect} from "react";
-import Todo from "../components/Todo";
-import SubmitTodo from "../components/SubmitTodo";
-import Tap from "../components/Tap";
+import Todo from "./Todo";
+import SubmitTodo from "./SubmitTodo";
+import Tap from "./Tap";
 
-function TodoList() {
+function MainView() {
   const [todo, setTodo] = useState([]);
   const [category, setCategory] = useState("");
   const [todoInput, setTodoInput] = useState("");
@@ -49,6 +49,10 @@ function TodoList() {
 
   const onSubmitTodo = async () => {
     try {
+      if (todoInput === "") {
+        alert("Todo를 입력해주세요.");
+        return;
+      }
       await addDoc(collection(dbService, "post"), {
         createAt: Date.now(),
         text: todoInput,
@@ -109,6 +113,10 @@ function TodoList() {
 
   const onSubmitUpdateTodo = async (id) => {
     try {
+      if (editTodoInput === "") {
+        alert("수정할 내용을 입력해주세요.");
+        return;
+      }
       await updateDoc(doc(dbService, `post/${id}`), {
         text: editTodoInput,
       });
@@ -117,16 +125,10 @@ function TodoList() {
     }
     setEditTodoInput("");
   };
+
   return (
     <StSafeAreaView>
       <StatusBar style="auto" />
-      <Tap category={category} setCategory={setCategory} />
-      <SubmitTodo
-        category={category}
-        todoInput={todoInput}
-        onChangeTodo={onChangeTodo}
-        onSubmitTodo={onSubmitTodo}
-      />
       <ScrollView>
         <StView>
           {category === ""
@@ -158,11 +160,20 @@ function TodoList() {
                 ))}
         </StView>
       </ScrollView>
+      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : ""}>
+        <SubmitTodo
+          category={category}
+          todoInput={todoInput}
+          onChangeTodo={onChangeTodo}
+          onSubmitTodo={onSubmitTodo}
+        />
+      </KeyboardAvoidingView>
+      <Tap category={category} setCategory={setCategory} />
     </StSafeAreaView>
   );
 }
 
-export default TodoList;
+export default MainView;
 
 const StSafeAreaView = styled.SafeAreaView`
   flex: 1;
