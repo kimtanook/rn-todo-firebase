@@ -17,6 +17,7 @@ import {
   ScrollView,
   Platform,
   Text,
+  View,
 } from "react-native";
 import styled, {css} from "@emotion/native";
 
@@ -133,8 +134,8 @@ function MainView() {
   };
 
   return (
-    <StSafeAreaView>
-      <StatusBar style="auto" />
+    <View style={{flex: 1}}>
+      <StatusBar style="light" />
       <StTitleText>Todo List</StTitleText>
       <ScrollView>
         <StView>
@@ -176,7 +177,7 @@ function MainView() {
         />
       </KeyboardAvoidingView>
       <Tap category={category} setCategory={setCategory} />
-    </StSafeAreaView>
+    </View>
   );
 }
 
@@ -195,8 +196,8 @@ const StTitleText = styled.Text`
   text-align: center;
   background-color: black;
   color: white;
-  height: 50px;
-  line-height: 50px;
+  height: 70px;
+  line-height: 80px;
   font-style: italic;
   font-weight: bold;
   font-size: 30px;
